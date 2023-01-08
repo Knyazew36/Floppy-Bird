@@ -1,11 +1,8 @@
 export default class Config {
   constructor() {
-    this.canvasWidth = 275;
+    this.canvasWidth = 276;
     this.canvasHeight = 400;
 
-    // // Временно
-    // this.step = 0;
-    // this.maxStep = 0;
 
     //Координаты заднего фона
     this.spriteSrc = "./img/sprite.png";
@@ -33,6 +30,9 @@ export default class Config {
     this.barrierWidth = 52;
     this.barrierHeight = 400;
 
-    // this.barrierSpeed = 2000;
+    this.bottomBoundsX = 276;
+    this.bottomBoundsY = 0;
+    this.bottomBoundsWidth = 224;
+    this.bottomBoundsHeight = 112;
   }
 }

@@ -1,15 +1,18 @@
 import Config from "./config.js";
 import Gravity from "./gravity.js";
 export default class Bird {
-  constructor(context, barrier) {
+  constructor(context) {
     this.gravity = new Gravity();
     this.config = new Config();
     this.context = context;
-    this.barrier = barrier;
+
     this.img = new Image();
     this.img.src = this.config.spriteSrc;
-    this.control();
+
+    this.x = 50;
     this.y = 150;
+    this.running = true;
+    this.control();
   }
   draw() {
     this.context.drawImage(
@@ -18,7 +21,7 @@ export default class Bird {
       this.config.BirdY,
       this.config.BirdWidth,
       this.config.BirdHeight,
-      50,
+      this.x,
       this.y,
       this.config.BirdWidth,
       this.config.BirdHeight
@@ -26,14 +29,21 @@ export default class Bird {
   }
   control() {
     document.addEventListener("click", () => {
-      this.y -= this.config.jump;
+      if (this.running) {
+        this.y -= this.config.jump;
+      }
     });
   }
   update() {
-    let y = this.y + this.gravity.dy;
-    if (y <= 0) {
-      this.y = 0;
+    if (this.running) {
+      let y = this.y + this.gravity.dy;
+      if (y <= 0) {
+        this.y = 0;
+      }
+      this.y += this.gravity.dy;
     }
-    this.y += this.gravity.dy;
+  }
+  end() {
+    this.running = false;
   }
 }

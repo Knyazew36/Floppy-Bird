@@ -7,6 +7,7 @@ export default class Canvas {
     this.img = new Image();
     this.img.src = this.config.spriteSrc;
     this.x = 0;
+    this.running = true;
   }
   draw() {
     if (this.x <= -this.config.canvasWidth) {
@@ -37,6 +38,11 @@ export default class Canvas {
     );
   }
   update() {
-    this.x -= this.config.speedBack;
+    if (this.running) {
+      this.x -= this.config.speedBack;
+    }
+  }
+  end() {
+    this.running = false;
   }
 }

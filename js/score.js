@@ -13,13 +13,37 @@ export default class Score {
     this.recScore = !localStorage.getItem("myRecord")
       ? (this.recScore = 0)
       : localStorage.getItem("myRecord");
+    this.running = true;
+
+    this.medalParametrs = {
+      sx: 0,
+      sy: 382,
+      width: 44,
+      height: 44,
+      x: 52,
+      y: 237,
+    };
   }
   update() {}
   draw() {
     this.context.fillStyle = "red";
-    this.context.font = "15px sans-serif";
+    this.context.font = "15px gameFont";
     this.context.fillText(this.score, this.scoreX, this.scoreY);
     this.context.fillText(this.recScore, this.recScoreX, this.recScoreY);
+
+    if (!this.running) {
+      this.context.drawImage(
+        this.img,
+        this.medalParametrs.sx,
+        this.medalParametrs.sy,
+        this.medalParametrs.width,
+        this.medalParametrs.height,
+        52,
+        147,
+        this.medalParametrs.width,
+        this.medalParametrs.height
+      );
+    }
   }
   up() {
     this.score += 1;
@@ -30,22 +54,24 @@ export default class Score {
       localStorage.setItem("myRecord", this.recScore);
     }
   }
-  // medal() {
-  //   if (this.score >= 10 && this.score <= 19) {
-  //     this.medalParametrs.sx = 312;
-  //     this.medalParametrs.sy = 112;
-  //   } else if (this.score >= 20 && this.score <= 29) {
-  //     this.medalParametrs.sx = 360;
-  //     this.medalParametrs.sy = 158;
-  //   } else if (this.score >= 30 && this.score <= 39) {
-  //     this.medalParametrs.sx = 360;
-  //     this.medalParametrs.sy = 112;
-  //   } else if (this.score >= 40) {
-  //     this.medalParametrs.sx = 312;
-  //     this.medalParametrs.sy = 158;
-  //   }
-  // }
+  medal() {
+    if (this.score >= 10 && this.score <= 19) {
+      this.medalParametrs.sx = 312;
+      this.medalParametrs.sy = 112;
+    } else if (this.score >= 20 && this.score <= 29) {
+      this.medalParametrs.sx = 360;
+      this.medalParametrs.sy = 158;
+    } else if (this.score >= 30 && this.score <= 39) {
+      this.medalParametrs.sx = 360;
+      this.medalParametrs.sy = 112;
+    } else if (this.score >= 40) {
+      this.medalParametrs.sx = 312;
+      this.medalParametrs.sy = 158;
+    }
+  }
   end() {
+    this.running = false;
+    this.medal();
     this.scoreX = 205;
     this.scoreY = 154;
     this.recScoreX = 205;

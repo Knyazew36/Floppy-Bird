@@ -26,7 +26,6 @@ class Game {
   draw() {
     this.ctx.clearRect(0, 0, this.config.canvasWidth, this.config.canvasHeight);
     this.canvas.draw();
-
     this.bird.draw();
     this.barrier.draw();
     this.score.draw();

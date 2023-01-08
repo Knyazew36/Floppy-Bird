@@ -3,7 +3,6 @@ export default class Config {
     this.canvasWidth = 276;
     this.canvasHeight = 400;
 
-
     //Координаты заднего фона
     this.spriteSrc = "./img/sprite.png";
 
@@ -34,5 +33,15 @@ export default class Config {
     this.bottomBoundsY = 0;
     this.bottomBoundsWidth = 224;
     this.bottomBoundsHeight = 112;
+
+    this.scoreX = 0;
+    this.scoreY = 20;
+    this.recScoreX = 30;
+    this.recScoreY = 20;
+
+    this.finallyPageX = 174;
+    this.finallyPageY = 228;
+    this.finallyPageWidth = 226;
+    this.finallyPageHeight = 200;
   }
 }

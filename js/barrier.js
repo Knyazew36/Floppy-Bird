@@ -14,6 +14,7 @@ export default class Barrier {
     this.barrierSpeed = 0.5;
     this.create();
   }
+
   draw() {
     for (let i = 0; i < this.barriers.length; i++) {
       this.context.drawImage(
@@ -60,6 +61,9 @@ export default class Barrier {
       }
     }
     this.bottomBounds();
+    if (!this.running) {
+      this.final();
+    }
   }
   bottomBounds() {
     this.context.drawImage(
@@ -74,38 +78,49 @@ export default class Barrier {
       this.config.bottomBoundsHeight
     );
   }
-  collideBottomBounds() {
-    if (
-      this.bird.y + this.config.BirdHeight >=
-      this.config.canvasHeight - 100
-    ) {
-      this.end();
-    }
-  }
+
   update() {
     this.collideBottomBounds();
     if (this.running) {
-      // if (this.score.score === 10) {
-      //   this.barrierSpeed = 0.6;
-      // }
       if (this.barriers.length >= 4) {
         this.barriers.shift();
+      }
+    }
+  }
+  collideBottomBounds() {
+    if (this.running) {
+      if (
+        this.bird.y + this.config.BirdHeight >=
+        this.config.canvasHeight - 100
+      ) {
+        this.end();
       }
     }
   }
   create() {
     setInterval(() => {
       this.barriers.push({
-        y: -getRandomArbitrary(230, 400),
+        y: -getRandomArbitrary(230, 380),
         x: this.config.canvasWidth,
         dy: this.config.canvasHeight + this.config.jump * 2,
       });
     }, 2000);
   }
-  // levelUp() {
-  //   this.barrierSpeed += 0.2;
-  // }
+  final() {
+    this.context.drawImage(
+      this.img,
+      this.config.finallyPageX,
+      this.config.finallyPageY,
+      this.config.finallyPageWidth,
+      this.config.finallyPageHeight,
+      25,
+      60,
+      this.config.finallyPageWidth,
+      this.config.finallyPageHeight
+    );
+  }
   end() {
+    this.score.end();
     this.bird.end();
     this.canvas.end();
     this.barrierSpeed = 0;

@@ -12,16 +12,28 @@ class Game {
     this.bird = new Bird(this.ctx);
     this.score = new Score(this.ctx);
     this.barrier = new Barrier(this.ctx, this.bird, this.canvas, this.score);
+    this.running = false;
+    // this.start();
     this.gameLoop = new GameLoop(this.draw.bind(this), this.update.bind(this));
   }
+  // start() {
+  //   window.addEventListener("click", () => {
+  //     this.start();
+  //     this.bird.start();
+
+  //   });
+  // }
   draw() {
     this.ctx.clearRect(0, 0, this.config.canvasWidth, this.config.canvasHeight);
     this.canvas.draw();
-    this.barrier.draw();
+
     this.bird.draw();
+    this.barrier.draw();
     this.score.draw();
   }
   update() {
+    if (this.running) {
+    }
     this.canvas.update();
     this.barrier.update();
     this.bird.update();

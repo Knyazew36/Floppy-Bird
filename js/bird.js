@@ -14,6 +14,7 @@ export default class Bird {
     this.running = true;
     this.control();
   }
+
   draw() {
     this.context.drawImage(
       this.img,

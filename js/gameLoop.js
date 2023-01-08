@@ -7,16 +7,11 @@ export default class GameLoop {
     this.config = new Config();
     this.animation = this.animation.bind(this);
     this.animation();
+    this.a = 0;
+    this.b = 2;
   }
   animation() {
     requestAnimationFrame(this.animation);
-    //Временно 
-    // if (++this.config.step < this.config.maxStep) {
-    //   return;
-    // }
-    // this.config.step = 0;
-
-    //
     this.draw();
     this.update();
   }

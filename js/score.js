@@ -26,10 +26,18 @@ export default class Score {
   }
   update() {}
   draw() {
-    this.context.fillStyle = "red";
-    this.context.font = "15px gameFont";
-    this.context.fillText(this.score, this.scoreX, this.scoreY);
-    this.context.fillText(this.recScore, this.recScoreX, this.recScoreY);
+    this.context.fillStyle = "black";
+    this.context.font = "16px game";
+    this.context.fillText(
+      this.running ? "score " + this.score : this.score,
+      this.scoreX,
+      this.scoreY
+    );
+    this.context.fillText(
+      this.running ? "best " + this.recScore : this.recScore,
+      this.recScoreX,
+      this.recScoreY
+    );
 
     if (!this.running) {
       this.context.drawImage(

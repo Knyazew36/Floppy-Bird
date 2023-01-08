@@ -34,10 +34,10 @@ export default class Config {
     this.bottomBoundsWidth = 223;
     this.bottomBoundsHeight = 112;
 
-    this.scoreX = 0;
+    this.scoreX = 5;
     this.scoreY = 20;
-    this.recScoreX = 30;
-    this.recScoreY = 20;
+    this.recScoreX = 5;
+    this.recScoreY = 40;
 
     this.finallyPageX = 174;
     this.finallyPageY = 228;

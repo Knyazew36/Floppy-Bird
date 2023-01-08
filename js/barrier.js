@@ -106,6 +106,11 @@ export default class Barrier {
       });
     }, 2000);
   }
+  endControl() {
+    window.addEventListener("click", () => {
+      window.location.reload();
+    });
+  }
   final() {
     this.context.drawImage(
       this.img,
@@ -120,6 +125,7 @@ export default class Barrier {
     );
   }
   end() {
+    this.endControl();
     this.score.end();
     this.bird.end();
     this.canvas.end();

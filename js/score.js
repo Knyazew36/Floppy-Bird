@@ -30,6 +30,21 @@ export default class Score {
       localStorage.setItem("myRecord", this.recScore);
     }
   }
+  // medal() {
+  //   if (this.score >= 10 && this.score <= 19) {
+  //     this.medalParametrs.sx = 312;
+  //     this.medalParametrs.sy = 112;
+  //   } else if (this.score >= 20 && this.score <= 29) {
+  //     this.medalParametrs.sx = 360;
+  //     this.medalParametrs.sy = 158;
+  //   } else if (this.score >= 30 && this.score <= 39) {
+  //     this.medalParametrs.sx = 360;
+  //     this.medalParametrs.sy = 112;
+  //   } else if (this.score >= 40) {
+  //     this.medalParametrs.sx = 312;
+  //     this.medalParametrs.sy = 158;
+  //   }
+  // }
   end() {
     this.scoreX = 205;
     this.scoreY = 154;

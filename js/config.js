@@ -31,7 +31,7 @@ export default class Config {
 
     this.bottomBoundsX = 276;
     this.bottomBoundsY = 0;
-    this.bottomBoundsWidth = 224;
+    this.bottomBoundsWidth = 223;
     this.bottomBoundsHeight = 112;
 
     this.scoreX = 0;

@@ -42,15 +42,16 @@ export default class Barrier {
         this.config.barrierWidth,
         this.config.barrierHeight
       );
-
-      if (
-        this.bird.x + this.config.BirdWidth >= this.barriers[i].x &&
-        this.bird.x <= this.barriers[i].x + this.config.barrierWidth &&
-        (this.bird.y <= this.barriers[i].y + this.config.barrierHeight ||
-          this.bird.y + this.config.BirdHeight >=
-            this.barriers[i].y + this.barriers[i].dy)
-      ) {
-        this.end();
+      if (this.running) {
+        if (
+          this.bird.x + this.config.BirdWidth >= this.barriers[i].x &&
+          this.bird.x <= this.barriers[i].x + this.config.barrierWidth &&
+          (this.bird.y <= this.barriers[i].y + this.config.barrierHeight ||
+            this.bird.y + this.config.BirdHeight >=
+              this.barriers[i].y + this.barriers[i].dy)
+        ) {
+          this.end();
+        }
       }
 
       if (
@@ -80,8 +81,8 @@ export default class Barrier {
   }
 
   update() {
-    this.collideBottomBounds();
     if (this.running) {
+      this.collideBottomBounds();
       if (this.barriers.length >= 4) {
         this.barriers.shift();
       }
@@ -125,11 +126,11 @@ export default class Barrier {
     );
   }
   end() {
+    this.running = false;
     this.endControl();
     this.score.end();
     this.bird.end();
     this.canvas.end();
     this.barrierSpeed = 0;
-    this.running = false;
   }
 }

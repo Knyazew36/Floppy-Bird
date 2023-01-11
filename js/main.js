@@ -10,7 +10,7 @@ class Game {
     this.config = new Config();
     this.canvas = new Canvas(this.ctx);
     this.bird = new Bird(this.ctx);
-    this.score = new Score(this.ctx);
+    this.score = new Score(this.ctx, this.bird);
     this.barrier = new Barrier(this.ctx, this.bird, this.canvas, this.score);
     this.running = false;
     this.gameLoop = new GameLoop(this.draw.bind(this), this.update.bind(this));

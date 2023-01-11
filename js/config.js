@@ -14,9 +14,9 @@ export default class Config {
     this.speedBack = 0.5; // Скорость фона
 
     this.BirdX = 276;
-    this.BirdY = 114;
+    this.BirdY = 113;
     this.BirdWidth = 34;
-    this.BirdHeight = 24;
+    this.BirdHeight = 26;
 
     this.jump = 50;
 

@@ -1,8 +1,9 @@
 import Config from "./config.js";
 export default class Score {
-  constructor(context) {
+  constructor(context, bird) {
     this.config = new Config();
     this.context = context;
+    this.bird = bird;
     this.img = new Image();
     this.img.src = this.config.spriteSrc;
     this.score = 0;
@@ -24,7 +25,6 @@ export default class Score {
       y: 237,
     };
   }
-  update() {}
   draw() {
     this.context.fillStyle = "black";
     this.context.font = "16px game";
@@ -55,6 +55,7 @@ export default class Score {
   }
   up() {
     this.score += 1;
+    this.bird.sounds.sfx_point.play();
   }
   record() {
     if (this.score > localStorage.getItem("myRecord")) {

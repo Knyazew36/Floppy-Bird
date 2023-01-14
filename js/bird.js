@@ -18,9 +18,9 @@ export default class Bird {
     this.x = 50;
     this.y = 150;
     this.running = true;
+    this.sound();
     this.control();
     this.animate();
-    this.sound();
   }
   sound() {
     for (let key in this.sounds) {
